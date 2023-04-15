@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { TcpController } from './TcpModule/tcp.controller';
+import { TcpController } from './TCPModule/tcp.controller';
 import { ProductGrpcController } from './GRPCModule/product-grpc-controller';
 import { RmqController } from './RMQModule/rmq.controller';
-import { TcpService } from './TcpModule/tcp.service';
+import { TcpService } from './TCPModule/tcp.service';
 import { RmqService } from './RMQModule/rmq.service';
 
 
