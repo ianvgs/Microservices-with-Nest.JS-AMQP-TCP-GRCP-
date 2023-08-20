@@ -8,19 +8,9 @@ export class TcpService {
 
   handleAnimalCreated(data: CreateAnimalEvent) {
     console.log('Handling Animal Created - COMMUNICATIONS', data)
-    //todo: email user to welcome
-  }
-
-  handleAnalyticsCreated(data: CreateAnimalEvent) {
-    this.analytics.push({
-      name: data.name,
-      timestamp: new Date()
-    })
-    console.log('Handling Analytics Created - ANAL LYTICS', data)
   }
 
   getAnalytics() {
     console.log('Receiving commands from microservices')
-    return this.analytics
   }
 }
