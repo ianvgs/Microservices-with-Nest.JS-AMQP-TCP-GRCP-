@@ -1,12 +1,12 @@
 
-import { Transport } from '@nestjs/microservices';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { join } from 'path';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.connectMicroservice({
+  app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.RMQ,
     options: {
       urls: ['amqp://guest:guest@localhost:5672'],
@@ -15,7 +15,18 @@ async function bootstrap() {
       persistent: true,
     }
   })
-  app.connectMicroservice({
+  /*  app.connectMicroservice<MicroserviceOptions>({
+     transport: Transport.KAFKA,
+     options: {
+       client: {
+         brokers: ['localhost:9092'],
+       },
+       consumer: {
+         groupId: 'payments-consumer',
+       },
+     },
+   }) */
+  app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.TCP,
     options: { /* port:3001, */ retryAttempts: 5, retryDelay: 3000 }
   })
